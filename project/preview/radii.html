@@ -1,0 +1,26 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html, body { margin: 0; }
+  body {
+    background: #F7F4EF; color: #1A1826;
+    padding: 28px 32px;
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+  }
+  .eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8A8799; margin-bottom: 18px; }
+  .grid { display: flex; gap: 16px; flex-wrap: wrap; }
+  .card { background: white; box-shadow: 0 8px 24px rgba(40,30,80,0.10), inset 0 1px 0 rgba(255,255,255,0.9); width: 88px; height: 88px; display: flex; align-items: flex-end; justify-content: center; padding: 10px; }
+  .label { font-size: 10px; font-family: ui-monospace, Menlo, monospace; color: #55526B; text-align: center; }
+</style>
+</head><body>
+<div class="eyebrow">Radii</div>
+<div class="grid">
+  <div><div class="card" style="border-radius:6px"><span class="label">xs · 6</span></div></div>
+  <div><div class="card" style="border-radius:10px"><span class="label">sm · 10</span></div></div>
+  <div><div class="card" style="border-radius:12px"><span class="label">md · 12</span></div></div>
+  <div><div class="card" style="border-radius:20px"><span class="label">lg · 20</span></div></div>
+  <div><div class="card" style="border-radius:28px"><span class="label">xl · 28</span></div></div>
+  <div><div class="card" style="border-radius:999px"><span class="label">full</span></div></div>
+</div>
+</body></html>

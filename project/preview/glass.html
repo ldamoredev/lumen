@@ -1,0 +1,61 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  .half { padding: 0; }
+  .scene { position: absolute; inset: 0; }
+  .scene.light { background:
+    radial-gradient(400px 200px at 30% 30%, #E8B5C8 0%, transparent 60%),
+    radial-gradient(500px 260px at 70% 80%, #A8C5E8 0%, transparent 55%),
+    #F7F4EF; }
+  .scene.dark { background:
+    radial-gradient(400px 200px at 30% 30%, #5A5CC7 0%, transparent 60%),
+    radial-gradient(500px 260px at 70% 80%, #C98AA8 0%, transparent 55%),
+    #0E1016; }
+  .glass {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 78%; padding: 18px 20px;
+    border-radius: 20px;
+    font-family: Inter, sans-serif;
+  }
+  .glass.light {
+    background: rgba(255,255,255,0.58);
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.65);
+    box-shadow: 0 8px 32px rgba(40,30,80,0.08), inset 0 1px 0 rgba(255,255,255,0.8);
+    color: #1A1826;
+  }
+  .glass.dark {
+    background: rgba(30,34,48,0.48);
+    backdrop-filter: blur(28px) saturate(130%);
+    -webkit-backdrop-filter: blur(28px) saturate(130%);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+    color: #ECEAF5;
+  }
+  .title { font-family: Fraunces, serif; font-size: 18px; font-weight: 500; font-variation-settings: 'opsz' 48; letter-spacing: -0.01em; }
+  .body { font-size: 13px; opacity: 0.72; margin-top: 4px; }
+  .mode-tag { position: absolute; top: 14px; left: 16px; z-index: 3; }
+  .light-tag { color: #55526B; }
+  .dark-tag { color: #A8A5BE; }
+</style>
+</head><body>
+<div class="card-split">
+  <div class="half" style="position:relative;">
+    <div class="scene light"></div>
+    <div class="mode-tag light-tag">Glass · Light</div>
+    <div class="glass light">
+      <div class="title">A quiet Thursday</div>
+      <div class="body">blur 24 · saturate 140% · 58% white</div>
+    </div>
+  </div>
+  <div class="half" style="position:relative;">
+    <div class="scene dark"></div>
+    <div class="mode-tag dark-tag">Glass · Dark</div>
+    <div class="glass dark">
+      <div class="title">A quiet Thursday</div>
+      <div class="body">blur 28 · saturate 130% · 48% ink</div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,238 @@
+/* ============================================================================
+   Lumen Design System — Tokens
+   Colors, type, spacing, radii, shadows, glass recipes.
+   Light & dark mode are peers. Toggle with [data-theme="dark"] on <html>.
+   ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@400;500;600;700&display=swap');
+
+/* -------- LIGHT (default) ------------------------------------------------- */
+:root {
+  /* Surfaces — warm off-white base, never pure white */
+  --bg-0: #F4F0EA;              /* page, deepest */
+  --bg-1: #F9F6F1;              /* raised surface */
+  --bg-2: #FDFBF7;              /* top surface / input */
+  --bg-tint: #EFEAF5;           /* subtle periwinkle tint */
+
+  /* Foreground */
+  --fg-1: #1A1826;              /* primary text */
+  --fg-2: #55526B;              /* secondary */
+  --fg-3: #8A8799;              /* tertiary, placeholders */
+  --fg-inverse: #FDFBF7;
+
+  /* Accents — dusty, never neon */
+  --accent: #7B7DE8;            /* periwinkle, primary brand */
+  --accent-soft: #B9BAF1;
+  --accent-deep: #5A5CC7;
+
+  /* Mood palette — soft gradient pairs */
+  --mood-calm-a: #A8C5E8;       --mood-calm-b: #C9DDF0;
+  --mood-tender-a: #E8B5C8;     --mood-tender-b: #F2D0DC;
+  --mood-heavy-a: #6B6F8C;      --mood-heavy-b: #9598B0;
+  --mood-bright-a: #E8C97B;     --mood-bright-b: #F3DDA3;
+  --mood-restless-a: #D89A8C;   --mood-restless-b: #E8B8AB;
+  --mood-grateful-a: #A8D1B5;   --mood-grateful-b: #C9E2D1;
+
+  /* Semantic */
+  --success: #6FA88A;
+  --warn: #D4A066;
+  --danger: #C97570;
+
+  /* Borders */
+  --border-hair: rgba(26, 24, 38, 0.06);
+  --border-strong: rgba(26, 24, 38, 0.12);
+  --border-glass: rgba(255, 255, 255, 0.65);
+
+  /* Glass recipe */
+  --glass-bg: rgba(255, 255, 255, 0.58);
+  --glass-blur: blur(24px) saturate(140%);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.65);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(40, 30, 80, 0.06);
+  --shadow-md: 0 8px 24px rgba(40, 30, 80, 0.10);
+  --shadow-lg: 0 20px 60px rgba(40, 30, 80, 0.16);
+
+  /* Page gradient */
+  --page-gradient: radial-gradient(1200px 700px at 100% -10%, #EFEAF5 0%, transparent 60%),
+                   radial-gradient(900px 600px at 0% 100%, #F0E4E8 0%, transparent 55%),
+                   linear-gradient(180deg, #F7F4EF 0%, #F4F0EA 100%);
+}
+
+/* -------- DARK ------------------------------------------------------------ */
+[data-theme="dark"] {
+  --bg-0: #0B0D14;
+  --bg-1: #14172150;            /* deliberately semi-transparent over page gradient */
+  --bg-1-solid: #171A26;
+  --bg-2: #1E2230;
+  --bg-tint: #1A1D2E;
+
+  --fg-1: #ECEAF5;
+  --fg-2: #A8A5BE;
+  --fg-3: #6E6B85;
+  --fg-inverse: #0E1016;
+
+  --accent: #9FA2FF;
+  --accent-soft: #5A5CC7;
+  --accent-deep: #C7C9FF;
+
+  --mood-calm-a: #5A8BC4;       --mood-calm-b: #7BA7D9;
+  --mood-tender-a: #C98AA8;     --mood-tender-b: #D9A8BF;
+  --mood-heavy-a: #4A4E6B;      --mood-heavy-b: #6B6F8C;
+  --mood-bright-a: #C9A85C;     --mood-bright-b: #D9BF7C;
+  --mood-restless-a: #B87D6E;   --mood-restless-b: #C99A8B;
+  --mood-grateful-a: #7DB591;   --mood-grateful-b: #9CCAAE;
+
+  --success: #7DC49F;
+  --warn: #E0B070;
+  --danger: #E08580;
+
+  --border-hair: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-glass: rgba(255, 255, 255, 0.10);
+
+  --glass-bg: rgba(30, 34, 48, 0.48);
+  --glass-blur: blur(28px) saturate(130%);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.10);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.40);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.55);
+
+  --page-gradient: radial-gradient(1200px 700px at 100% -10%, #1E1B3A 0%, transparent 60%),
+                   radial-gradient(900px 600px at 0% 100%, #2A1B2E 0%, transparent 55%),
+                   linear-gradient(180deg, #0E1016 0%, #0B0D14 100%);
+}
+
+/* -------- TYPE ------------------------------------------------------------ */
+:root {
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Raw scale */
+  --fs-10: 10px;   --lh-10: 14px;
+  --fs-12: 12px;   --lh-12: 16px;
+  --fs-13: 13px;   --lh-13: 18px;
+  --fs-15: 15px;   --lh-15: 22px;
+  --fs-17: 17px;   --lh-17: 26px;
+  --fs-20: 20px;   --lh-20: 28px;
+  --fs-24: 24px;   --lh-24: 32px;
+  --fs-32: 32px;   --lh-32: 40px;
+  --fs-40: 40px;   --lh-40: 46px;
+  --fs-56: 56px;   --lh-56: 60px;
+}
+
+/* Semantic typography classes — apply to elements directly */
+.t-display {
+  font-family: var(--font-display);
+  font-size: var(--fs-56); line-height: var(--lh-56);
+  font-weight: 400; letter-spacing: -0.025em;
+  font-variation-settings: 'opsz' 144;
+}
+.t-h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-40); line-height: var(--lh-40);
+  font-weight: 400; letter-spacing: -0.02em;
+  font-variation-settings: 'opsz' 96;
+}
+.t-h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-32); line-height: var(--lh-32);
+  font-weight: 400; letter-spacing: -0.015em;
+  font-variation-settings: 'opsz' 72;
+}
+.t-h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-24); line-height: var(--lh-24);
+  font-weight: 500; letter-spacing: -0.01em;
+  font-variation-settings: 'opsz' 48;
+}
+.t-title {
+  font-family: var(--font-ui);
+  font-size: var(--fs-17); line-height: var(--lh-17);
+  font-weight: 600; letter-spacing: -0.005em;
+}
+.t-body {
+  font-family: var(--font-ui);
+  font-size: var(--fs-15); line-height: var(--lh-15);
+  font-weight: 400;
+}
+.t-body-lg {
+  font-family: var(--font-display);
+  font-size: var(--fs-17); line-height: 28px;
+  font-weight: 400;
+  font-variation-settings: 'opsz' 24;
+}
+.t-caption {
+  font-family: var(--font-ui);
+  font-size: var(--fs-13); line-height: var(--lh-13);
+  font-weight: 500; color: var(--fg-2);
+}
+.t-meta {
+  font-family: var(--font-ui);
+  font-size: var(--fs-12); line-height: var(--lh-12);
+  font-weight: 500; color: var(--fg-3);
+}
+.t-eyebrow {
+  font-family: var(--font-ui);
+  font-size: var(--fs-10); line-height: var(--lh-10);
+  font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+.t-italic { font-style: italic; }
+
+/* -------- SPACING -------------------------------------------------------- */
+:root {
+  --sp-1: 4px;   --sp-2: 8px;   --sp-3: 12px;  --sp-4: 16px;
+  --sp-5: 20px;  --sp-6: 24px;  --sp-8: 32px;  --sp-10: 40px;
+  --sp-14: 56px; --sp-18: 72px;
+
+  --screen-pad: 20px;
+}
+
+/* -------- RADII --------------------------------------------------------- */
+:root {
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-full: 999px;
+}
+
+/* -------- MOTION -------------------------------------------------------- */
+:root {
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-fast: 160ms;
+  --dur: 280ms;
+  --dur-slow: 480ms;
+}
+
+/* -------- HELPERS ------------------------------------------------------- */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  box-shadow: var(--shadow-md), var(--glass-highlight);
+}
+
+.page-bg {
+  background: var(--page-gradient);
+  color: var(--fg-1);
+}
+
+/* Default body */
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  background: var(--bg-0);
+  color: var(--fg-1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+* { box-sizing: border-box; }

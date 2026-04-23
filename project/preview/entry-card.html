@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  .half { padding: 20px 18px; font-family: Inter, sans-serif; }
+  .card { position: relative; border-radius: 20px; padding: 16px 18px 18px 22px; }
+  .card-l { background: rgba(255,255,255,0.7); box-shadow: 0 8px 24px rgba(40,30,80,0.08), inset 0 1px 0 rgba(255,255,255,0.9); }
+  .card-d { background: rgba(30,34,48,0.55); box-shadow: 0 8px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06); }
+  .mood-bar { position: absolute; left: 10px; top: 14px; bottom: 14px; width: 4px; border-radius: 2px; }
+  .date { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; }
+  .title { font-family: Fraunces, serif; font-size: 20px; line-height: 26px; font-weight: 500; font-variation-settings: 'opsz' 48; letter-spacing: -0.01em; margin: 4px 0 4px; }
+  .body { font-size: 13px; line-height: 19px; opacity: 0.72; }
+  .meta { display: flex; gap: 10px; margin-top: 10px; font-size: 11px; opacity: 0.55; }
+</style>
+</head><body>
+<div class="card-split">
+  <div class="half light">
+    <div class="mode-tag">Entry card · Light</div>
+    <div class="card card-l" style="margin-top:4px;">
+      <div class="mood-bar" style="background:linear-gradient(180deg,#E8B5C8,#F2D0DC);"></div>
+      <div class="date" style="color:#55526B;">Thu · Apr 23</div>
+      <div class="title" style="color:#1A1826;">A quiet Thursday</div>
+      <div class="body" style="color:#55526B;">Walked the long way home. The light on the brick wall near the corner looked almost pink — noticed I wasn't in a hurry about anything.</div>
+      <div class="meta" style="color:#8A8799;">tender · 284 words · 3 tags</div>
+    </div>
+  </div>
+  <div class="half dark">
+    <div class="mode-tag">Entry card · Dark</div>
+    <div class="card card-d" style="margin-top:4px;">
+      <div class="mood-bar" style="background:linear-gradient(180deg,#C98AA8,#D9A8BF);"></div>
+      <div class="date" style="color:#A8A5BE;">Thu · Apr 23</div>
+      <div class="title" style="color:#ECEAF5;">A quiet Thursday</div>
+      <div class="body" style="color:#A8A5BE;">Walked the long way home. The light on the brick wall near the corner looked almost pink — noticed I wasn't in a hurry about anything.</div>
+      <div class="meta" style="color:#6E6B85;">tender · 284 words · 3 tags</div>
+    </div>
+  </div>
+</div>
+</body></html>

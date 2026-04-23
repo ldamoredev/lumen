@@ -1,0 +1,65 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+<style>
+  .half { padding: 0; position: relative; }
+  .scene { position: absolute; inset: 0; }
+  .scene.light { background: radial-gradient(400px 220px at 70% 30%, #EFEAF5 0%, transparent 60%), radial-gradient(400px 220px at 20% 80%, #F0E4E8 0%, transparent 55%), #F7F4EF; }
+  .scene.dark  { background: radial-gradient(400px 220px at 70% 30%, #2A2750 0%, transparent 60%), radial-gradient(400px 220px at 20% 80%, #2A1B2E 0%, transparent 55%), #0E1016; }
+  .nav {
+    position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 4px;
+    padding: 8px 10px; border-radius: 999px;
+  }
+  .nav.light {
+    background: rgba(255,255,255,0.65);
+    backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.7);
+    box-shadow: 0 8px 32px rgba(40,30,80,0.12), inset 0 1px 0 rgba(255,255,255,0.9);
+  }
+  .nav.dark {
+    background: rgba(30,34,48,0.55);
+    backdrop-filter: blur(28px) saturate(130%);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .nav button {
+    background: transparent; border: 0; cursor: pointer;
+    width: 46px; height: 46px; border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .nav.light button { color: #8A8799; }
+  .nav.light button.active { color: #1A1826; background: rgba(123,125,232,0.14); }
+  .nav.dark button { color: #6E6B85; }
+  .nav.dark button.active { color: #ECEAF5; background: rgba(159,162,255,0.18); }
+  .mode-tag { position: absolute; top: 14px; left: 16px; z-index: 3; }
+  .light .mode-tag { color: #55526B; }
+  .dark .mode-tag { color: #A8A5BE; }
+</style>
+</head><body>
+<div class="card-split">
+  <div class="half light">
+    <div class="scene light"></div>
+    <div class="mode-tag">Bottom nav · Light</div>
+    <div class="nav light">
+      <button class="active"><i data-lucide="home"></i></button>
+      <button><i data-lucide="calendar-days"></i></button>
+      <button style="width:54px;height:54px;background:#1A1826;color:#FDFBF7;"><i data-lucide="pen-line"></i></button>
+      <button><i data-lucide="sparkles"></i></button>
+      <button><i data-lucide="user-round"></i></button>
+    </div>
+  </div>
+  <div class="half dark">
+    <div class="scene dark"></div>
+    <div class="mode-tag">Bottom nav · Dark</div>
+    <div class="nav dark">
+      <button class="active"><i data-lucide="home"></i></button>
+      <button><i data-lucide="calendar-days"></i></button>
+      <button style="width:54px;height:54px;background:#9FA2FF;color:#0E1016;"><i data-lucide="pen-line"></i></button>
+      <button><i data-lucide="sparkles"></i></button>
+      <button><i data-lucide="user-round"></i></button>
+    </div>
+  </div>
+</div>
+<script>lucide.createIcons({ attrs: { 'stroke-width': 1.6 } });</script>
+</body></html>

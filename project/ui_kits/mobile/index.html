@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Lumen · Mobile UI kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css"/>
+<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+<style>
+  html, body { margin: 0; background: #E8E3DB; min-height: 100vh; }
+  [data-theme="dark-page"] body { background: #05070C; }
+  body { font-family: 'Inter', sans-serif; }
+  .stage {
+    min-height: 100vh; padding: 40px 24px 60px;
+    display: flex; flex-direction: column; gap: 40px; align-items: center;
+  }
+  .stage-header { width: 100%; max-width: 1200px; text-align: center; }
+  .stage-header h1 { font-family: 'Fraunces', serif; font-size: 36px; margin: 0; font-weight: 400; letter-spacing: -0.02em; color: #1A1826; font-style: italic; }
+  .stage-header p { font-size: 14px; color: #55526B; margin-top: 6px; }
+  .controls { display: inline-flex; gap: 6px; padding: 4px; border-radius: 999px; background: rgba(255,255,255,0.65); backdrop-filter: blur(16px); margin-top: 14px; border: 1px solid rgba(255,255,255,0.8); box-shadow: 0 4px 12px rgba(40,30,80,0.08); }
+  .controls button {
+    padding: 8px 14px; border-radius: 999px; border: none; cursor: pointer;
+    background: transparent; font-size: 12px; font-weight: 600; color: #55526B; font-family: Inter, sans-serif;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .controls button.active { background: #1A1826; color: #FDFBF7; }
+  .row { display: flex; gap: 28px 20px; flex-wrap: wrap; justify-content: center; align-items: flex-start; width: 100%; max-width: 1400px; }
+  .device {
+    width: 340px; height: 720px; border-radius: 48px;
+    padding: 12px; background: #222;
+    box-shadow:
+      0 30px 80px rgba(40,30,80,0.25),
+      inset 0 0 0 2px #333,
+      inset 0 0 0 3px #0b0b0b;
+    position: relative; flex: 0 0 auto;
+  }
+  .screen {
+    width: 100%; height: 100%; border-radius: 36px; overflow: hidden; position: relative;
+    background: #F7F4EF;
+  }
+  .device.dark .screen { background: #0B0D14; }
+  .notch {
+    position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+    width: 96px; height: 28px; border-radius: 999px; background: #000; z-index: 30;
+  }
+  .home-ind {
+    position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+    width: 120px; height: 4px; border-radius: 2px;
+    background: rgba(26,24,38,0.4); z-index: 25;
+  }
+  .device.dark .home-ind { background: rgba(255,255,255,0.4); }
+  .status-bar {
+    position: absolute; top: 0; left: 0; right: 0; height: 50px; padding: 14px 28px 0;
+    display: flex; justify-content: space-between; align-items: center; z-index: 25; pointer-events: none;
+    font-size: 13px; font-weight: 600; color: #1A1826;
+  }
+  .device.dark .status-bar { color: #ECEAF5; }
+  .label-cap { text-align: center; margin-top: 10px; }
+  .label-cap .eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(85,82,107,0.55); }
+  .label-cap .name { font-family: 'Fraunces', serif; font-size: 16px; color: #1A1826; margin-top: 2px; font-style: italic; }
+  body[data-page="dark"] .stage-header h1, body[data-page="dark"] .label-cap .name { color: #ECEAF5; }
+  body[data-page="dark"] .stage-header p { color: #A8A5BE; }
+  body[data-page="dark"] .label-cap .eyebrow { color: rgba(168,165,190,0.5); }
+  body[data-page="dark"] { background: #08090E; }
+  body[data-page="dark"] .controls { background: rgba(30,34,48,0.55); border-color: rgba(255,255,255,0.08); }
+  body[data-page="dark"] .controls button { color: #A8A5BE; }
+  body[data-page="dark"] .controls button.active { background: #ECEAF5; color: #0E1016; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="Primitives.jsx"></script>
+<script type="text/babel" src="Screens.jsx"></script>
+<script type="text/babel" src="Flows.jsx"></script>
+
+<script type="text/babel">
+function Device({ dark, children, label, sub }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div className={`device ${dark ? 'dark' : ''}`}>
+        <div className="notch"/>
+        <div className="screen">
+          <PageBg dark={dark}>
+            {children}
+          </PageBg>
+          <div className="status-bar">
+            <span>9:41</span>
+            <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+              <i data-lucide="signal" style={{ width: 14, height: 14 }}/>
+              <i data-lucide="wifi" style={{ width: 14, height: 14 }}/>
+              <i data-lucide="battery-full" style={{ width: 20, height: 20 }}/>
+            </div>
+          </div>
+        </div>
+        <div className="home-ind"/>
+      </div>
+      <div className="label-cap">
+        <div className="eyebrow">{sub}</div>
+        <div className="name">{label}</div>
+      </div>
+    </div>
+  );
+}
+
+function InteractivePhone({ dark }) {
+  const [screen, setScreen] = React.useState('home');
+  const [tab, setTab] = React.useState('home');
+  const [openedEntry, setOpenedEntry] = React.useState(null);
+  const [locked, setLocked] = React.useState(false);
+
+  const nav = (key) => {
+    if (key === 'write') { setScreen('editor'); return; }
+    setTab(key);
+    setScreen(key);
+  };
+  const openEntry = (e) => { setOpenedEntry(e); setScreen('entry'); };
+  const backHome = () => { setScreen(tab); };
+
+  let body;
+  if (locked) body = <LockScreen dark={dark} onUnlock={() => setLocked(false)}/>;
+  else if (screen === 'home') body = <HomeScreen dark={dark} onWrite={() => setScreen('editor')} onOpenEntry={openEntry}/>;
+  else if (screen === 'timeline') body = <TimelineScreen dark={dark} onOpenEntry={openEntry}/>;
+  else if (screen === 'insights') body = <InsightsScreen dark={dark}/>;
+  else if (screen === 'profile') body = <ProfileScreen dark={dark} onThemeToggle={() => window.setPageDark(!dark)}/>;
+  else if (screen === 'editor') body = <EditorScreen dark={dark} onDone={() => setScreen(tab)}/>;
+  else if (screen === 'entry') body = <EntryDetailScreen dark={dark} entry={openedEntry} onBack={backHome}/>;
+  else if (screen === 'checkin') body = <MoodCheckinScreen dark={dark} onDone={() => setScreen('home')}/>;
+  else if (screen === 'prompts') body = <PromptsScreen dark={dark} onBack={backHome}/>;
+
+  const showNav = !locked && ['home','timeline','insights','profile'].includes(screen);
+
+  return (
+    <Device dark={dark} label="Click through" sub="Interactive prototype">
+      {body}
+      {showNav && <BottomNav dark={dark} active={tab} onNav={nav}/>}
+
+      {/* secondary triggers visible on home */}
+      {screen === 'home' && !locked && (
+        <div style={{ position: 'absolute', top: 60, right: 20, display: 'flex', gap: 8, zIndex: 11 }}>
+          <button onClick={() => setLocked(true)} title="Lock" style={iconBtn(dark)}><i data-lucide="lock" style={{ width: 16, height: 16 }}/></button>
+          <button onClick={() => setScreen('checkin')} title="Mood" style={iconBtn(dark)}><i data-lucide="heart" style={{ width: 16, height: 16 }}/></button>
+          <button onClick={() => setScreen('prompts')} title="Prompts" style={iconBtn(dark)}><i data-lucide="quote" style={{ width: 16, height: 16 }}/></button>
+        </div>
+      )}
+    </Device>
+  );
+}
+
+function iconBtn(dark) {
+  return {
+    width: 36, height: 36, borderRadius: 999, border: 'none', cursor: 'pointer',
+    background: dark ? 'rgba(30,34,48,0.7)' : 'rgba(255,255,255,0.75)',
+    backdropFilter: 'blur(16px) saturate(140%)',
+    color: dark ? '#ECEAF5' : '#1A1826',
+    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+    boxShadow: '0 2px 8px rgba(40,30,80,0.08)',
+  };
+}
+
+function App() {
+  const [dark, setDark] = React.useState(false);
+  window.setPageDark = setDark;
+  React.useEffect(() => {
+    document.body.dataset.page = dark ? 'dark' : 'light';
+    document.documentElement.dataset.theme = dark ? 'dark' : '';
+  }, [dark]);
+  React.useEffect(() => {
+    const t = setTimeout(() => window.lucide?.createIcons({ attrs: { 'stroke-width': 1.6 } }), 50);
+    return () => clearTimeout(t);
+  });
+
+  return (
+    <div className="stage">
+      <div className="stage-header">
+        <h1>Lumen</h1>
+        <p>A private journal, mobile UI kit — 9 screens across dark and light.</p>
+        <div className="controls">
+          <button className={!dark ? 'active' : ''} onClick={() => setDark(false)}>Light</button>
+          <button className={dark ? 'active' : ''} onClick={() => setDark(true)}>Dark</button>
+        </div>
+      </div>
+
+      <div className="row">
+        <InteractivePhone dark={dark}/>
+        <Device dark={dark} label="Onboarding" sub="Step 1 of 3"><OnboardingScreen dark={dark} onDone={() => {}}/></Device>
+        <Device dark={dark} label="Mood check-in" sub="Breathing picker"><MoodCheckinScreen dark={dark} onDone={() => {}}/></Device>
+        <Device dark={dark} label="New entry" sub="Writing experience"><EditorScreen dark={dark} onDone={() => {}}/></Device>
+      </div>
+
+      <div className="row">
+        <Device dark={dark} label="Timeline" sub="List & calendar"><TimelineScreen dark={dark} onOpenEntry={() => {}}/><BottomNav dark={dark} active="timeline" onNav={() => {}}/></Device>
+        <Device dark={dark} label="Insights" sub="How this month felt"><InsightsScreen dark={dark}/><BottomNav dark={dark} active="insights" onNav={() => {}}/></Device>
+        <Device dark={dark} label="Prompts" sub="Guided reflection"><PromptsScreen dark={dark} onBack={() => {}}/></Device>
+        <Device dark={dark} label="Entry detail" sub="Long-form read"><EntryDetailScreen dark={dark} onBack={() => {}} entry={{ date: 'Thu · Apr 23', title: 'A quiet Thursday', mood: 'tender', excerpt: "Walked the long way home. The light on the brick wall near the corner looked almost pink — noticed I wasn't in a hurry about anything." }}/></Device>
+      </div>
+
+      <div className="row">
+        <Device dark={dark} label="Profile & settings" sub="Appearance, privacy"><ProfileScreen dark={dark} onThemeToggle={() => setDark(!dark)}/><BottomNav dark={dark} active="profile" onNav={() => {}}/></Device>
+        <Device dark={dark} label="Privacy lock" sub="Only for you"><LockScreen dark={dark} onUnlock={() => {}}/></Device>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body></html>

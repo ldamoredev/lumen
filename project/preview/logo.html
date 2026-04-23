@@ -1,0 +1,39 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  .half { padding: 0; position: relative; }
+  .scene.light { position: absolute; inset:0; background: radial-gradient(400px 260px at 50% 40%, #EFEAF5 0%, transparent 60%), #F7F4EF; }
+  .scene.dark  { position: absolute; inset:0; background: radial-gradient(400px 260px at 50% 40%, #2A2750 0%, transparent 60%), #0E1016; }
+  .logo-wrap { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; font-family: Fraunces, serif; }
+  .wordmark { font-size: 48px; font-weight: 400; letter-spacing: -0.035em; font-variation-settings: 'opsz' 144; font-style: italic;}
+  .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: baseline;
+    background: radial-gradient(circle at 30% 30%, #E8B5C8, #7B7DE8);
+    box-shadow: 0 2px 10px rgba(123,125,232,0.5);
+  }
+  .tag { font-family: Inter, sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.6; }
+  .light .wordmark { color: #1A1826; }
+  .dark  .wordmark { color: #ECEAF5; }
+  .mode-tag { position: absolute; top: 14px; left: 16px; z-index: 3; }
+  .light .mode-tag { color: #55526B; }
+  .dark  .mode-tag { color: #A8A5BE; }
+</style>
+</head><body>
+<div class="card-split">
+  <div class="half light">
+    <div class="scene light"></div>
+    <div class="mode-tag">Lumen · wordmark</div>
+    <div class="logo-wrap">
+      <div class="wordmark"><span class="dot"></span>lumen</div>
+      <div class="tag">a quiet journal</div>
+    </div>
+  </div>
+  <div class="half dark">
+    <div class="scene dark"></div>
+    <div class="mode-tag">Lumen · wordmark</div>
+    <div class="logo-wrap">
+      <div class="wordmark"><span class="dot" style="background: radial-gradient(circle at 30% 30%, #D9A8BF, #9FA2FF);"></span>lumen</div>
+      <div class="tag">a quiet journal</div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,43 @@
+/* Shared card frame for Design System preview tiles */
+html, body { margin: 0; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-0);
+  color: var(--fg-1);
+  padding: 20px;
+  min-height: 100vh;
+}
+.card-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  min-height: calc(100vh - 40px);
+}
+.half {
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.half.light { background: #F7F4EF; color: #1A1826; }
+.half.dark  { background: #0E1016; color: #ECEAF5; }
+.half.dark::before, .half.light::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.half.light::before {
+  background: radial-gradient(600px 400px at 100% -10%, #EFEAF5 0%, transparent 60%),
+              radial-gradient(500px 300px at 0% 110%, #F0E4E8 0%, transparent 55%);
+}
+.half.dark::before {
+  background: radial-gradient(600px 400px at 100% -10%, #1E1B3A 0%, transparent 60%),
+              radial-gradient(500px 300px at 0% 110%, #2A1B2E 0%, transparent 55%);
+}
+.half > * { position: relative; z-index: 1; }
+.mode-tag {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; opacity: 0.5;
+  margin-bottom: 12px;
+}

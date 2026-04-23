@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  .half { padding: 24px 22px; font-family: Inter, sans-serif; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; }
+  .btn { padding: 12px 18px; border-radius: 12px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; letter-spacing: -0.005em; }
+  .primary-l { background: #1A1826; color: #FDFBF7; }
+  .secondary-l { background: rgba(123,125,232,0.12); color: #5A5CC7; }
+  .ghost-l { background: transparent; color: #55526B; border: 1px solid rgba(26,24,38,0.12); }
+  .accent-l { background: #7B7DE8; color: white; }
+  .primary-d { background: #ECEAF5; color: #0E1016; }
+  .secondary-d { background: rgba(159,162,255,0.16); color: #C7C9FF; }
+  .ghost-d { background: transparent; color: #A8A5BE; border: 1px solid rgba(255,255,255,0.14); }
+  .accent-d { background: #9FA2FF; color: #0E1016; }
+</style>
+</head><body>
+<div class="card-split">
+  <div class="half light">
+    <div class="mode-tag">Buttons · Light</div>
+    <div class="grid">
+      <button class="btn primary-l">Save entry</button>
+      <button class="btn accent-l">Start writing</button>
+      <button class="btn secondary-l">Add prompt</button>
+      <button class="btn ghost-l">Cancel</button>
+    </div>
+  </div>
+  <div class="half dark">
+    <div class="mode-tag">Buttons · Dark</div>
+    <div class="grid">
+      <button class="btn primary-d">Save entry</button>
+      <button class="btn accent-d">Start writing</button>
+      <button class="btn secondary-d">Add prompt</button>
+      <button class="btn ghost-d">Cancel</button>
+    </div>
+  </div>
+</div>
+</body></html>
